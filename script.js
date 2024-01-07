@@ -4,14 +4,23 @@ const mines_element = document.getElementById('mines');
 const timer_element = document.getElementById('timer');
 const restart_element = document.getElementById("restart");
 
-const ORIGINAL_number_of_bombs=40;
-let number_of_bombs = 40;
-let displayed_number_of_bombs = 40;
+const ORIGINAL_number_of_bombs=5;
+let number_of_bombs = 5;
+let displayed_number_of_bombs = 5;
 
 let grid_of_bombs = [];
 let rows = 16;
 let columns = 16;
 let game_running = true;
+
+
+restart_element.addEventListener('click',()=>
+{
+  console.log("clicked");
+})
+
+
+
 for(let x=0;x<rows;x++)
 {
   grid_of_bombs[x]=[];
@@ -33,7 +42,7 @@ while(number_of_bombs>0)
   }
   else
   {
-    console.log("failure");
+    //console.log("failure");
   }
 }
 
@@ -58,7 +67,7 @@ for(let x=0;x<rows;x++)
     }
   }
 }
-console.log(grid_of_bombs);
+//console.log(grid_of_bombs);
 
 for(let x=0;x<16;x++)
 {
@@ -71,7 +80,8 @@ for(let x=0;x<16;x++)
     {
       if(game_running==true)
       {
-      click(button,x,y);
+        click(button,x,y);
+        check_winner();
       }
     })
 
@@ -173,21 +183,75 @@ function click(button,x,y)
     }
   }
 
-  if(grid_of_bombs[x][y]==-1)
+  if(grid_of_bombs[x][y]==-1 && button.querySelector("img") == null)
   {
     restart_element.textContent=":(";
-    const mine_img = new Image();
-    mine_img.src="mine.png";
-    mine_img.width=button.offsetWidth-6;
-    mine_img.height=button.offsetHeight-6;
-    mine_img.style.verticalAlign = "middle";
-    button.innerHTML ='';
-    button.appendChild(mine_img);
-    console.log("LOST");
+    game_running = false;
+    show_bombs();
+  }
+}
+
+function show_bombs()
+{
+  for(let x=0;x<rows;x++)
+  {
+    for(let y=0;y<columns;y++)
+    {
+      let mine_specific_button = grid_container.children[(x)*columns+(y)]
+      if(grid_of_bombs[x][y]==-1 && mine_specific_button.querySelector('img') == null)
+      {
+        const mine_img = new Image();
+        mine_img.src="mine.png";
+        mine_img.width=mine_specific_button.offsetWidth-6;
+        mine_img.height=mine_specific_button.offsetHeight-6;
+        mine_img.style.verticalAlign = "middle";
+        mine_specific_button.innerHTML ='';
+        mine_specific_button.appendChild(mine_img);
+      }
+      if(grid_of_bombs[x][y]!=-1 && mine_specific_button.querySelector('img') != null)
+      {
+        const mine_with_x_img = new Image();
+        mine_with_x_img.src="mine_with_x.png";
+        mine_with_x_img.width=mine_specific_button.offsetWidth-6;
+        mine_with_x_img.height=mine_specific_button.offsetHeight-6;
+        mine_with_x_img.style.verticalAlign = "middle";
+        mine_specific_button.innerHTML ='';
+        mine_specific_button.appendChild(mine_with_x_img);
+      }
+    }
+  }
+}
+
+function check_winner()
+{
+  let counter=0;
+  for(let m=0; m<rows;m++)
+  {
+    for(let n=0;n<rows;n++)
+    {
+      //console.log(grid_container.children[(m)*columns+(n)]);
+      if(grid_container.children[(m)*columns+(n)].disabled==false)
+      {
+        counter++;
+        console.log("ran");
+      }
+    }
+  }
+  if(counter== ORIGINAL_number_of_bombs)
+  {
+    console.log("won");
+    restart_element.textContent=":)";
     game_running = false;
   }
-  
 }
+
+
+
+
+
+
+
+
 
 let time = 0;
 

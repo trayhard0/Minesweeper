@@ -4,9 +4,9 @@ const mines_element = document.getElementById('mines');
 const timer_element = document.getElementById('timer');
 const restart_element = document.getElementById("restart");
 
-const ORIGINAL_number_of_bombs=5;
-let number_of_bombs = 5;
-let displayed_number_of_bombs = 5;
+const ORIGINAL_number_of_bombs=40;
+let number_of_bombs = 40;
+let displayed_number_of_bombs = 40;
 
 let grid_of_bombs = [];
 let rows = 16;

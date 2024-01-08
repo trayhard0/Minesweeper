@@ -10,7 +10,6 @@ body{
   margin:auto;
   background-color: lightgray;
 }
-
 h1{
   margin:0px;
 }
@@ -26,8 +25,6 @@ h4{
 h5{
   margin:0px;
 }
-
-
 .top-area{
   margin:auto;
   margin-top:0px;
@@ -39,7 +36,6 @@ h5{
   display:flex;
   align-items: center;
 }
-
 .grid_of_buttons{
   text-align:center;
   border-style:solid;
@@ -49,7 +45,6 @@ h5{
   width:560px;
   grid-template-columns:repeat(16,35px);
 }
-
 .grid_button{
   margin: 0px;
   width:35px;
@@ -61,12 +56,9 @@ h5{
   outline:none;
   vertical-align:top;
 }
-
 .grid_button:hover{
   background-color:#ebebeb;
 }
-
-
 #mines{
   text-align:left;
   width:auto;

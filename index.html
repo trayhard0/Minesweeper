@@ -4,16 +4,24 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>Minesweeper</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link href="Medium/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-  <div class="top-area">
-    <h3 id="mines">40</h3>
-    <button id="restart">:|</button>
-    <h3 id="timer">000</h3>
+  <div class="difficulty">Difficulty</div>
+  <ul class="difficulty_options">
+    <li> <a href="Hard/hard.html">Hard</a> </li>
+    <li> <a href="index.html">Medium</a> </li>
+    <li> <a href="Easy/easy.html">Easy</a> </li>
+  </ul>
+  <div id="game">
+    <div class="top-area">
+      <h3 id="mines">40</h3>
+      <button id="restart">:|</button>
+      <h3 id="timer">000</h3>
+    </div>
+    <div class="medium_grid_of_buttons">
+    </div>
   </div>
-  <div class="grid_of_buttons">
-  </div>
-  <script type="module" src="script.js"></script>
+  <script type="module" src="Medium/script.js"></script>
 </body>
 </html>

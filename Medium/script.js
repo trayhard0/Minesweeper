@@ -4,8 +4,8 @@ const mines_element = document.getElementById('mines');
 const timer_element = document.getElementById('timer');
 const restart_element = document.getElementById("restart");
 const ORIGINAL_number_of_bombs=40;
-let number_of_bombs = 40;
-let displayed_number_of_bombs = 40;
+let number_of_bombs = ORIGINAL_number_of_bombs;
+let displayed_number_of_bombs = ORIGINAL_number_of_bombs;
 let grid_of_bombs = [];
 let rows = 16;
 let columns = 16;
@@ -54,9 +54,9 @@ function create_grid()
     }
   }
 }
-for(let x=0;x<16;x++)
+for(let x=0;x<rows;x++)
 {
-  for(let y=0;y<16;y++)
+  for(let y=0;y<columns;y++)
   {
     const button = document.createElement("button");
     button.classList.add("grid_button");
@@ -239,8 +239,8 @@ function increment_time()
 setInterval(increment_time,1000);
 restart_element.addEventListener('click',()=>
 {
-  number_of_bombs = 40;
-  displayed_number_of_bombs = 40;
+  number_of_bombs = ORIGINAL_number_of_bombs;
+  displayed_number_of_bombs = ORIGINAL_number_of_bombs;
   grid_of_bombs = [];
   create_grid();
   game_running = true;
